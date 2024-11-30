@@ -1,0 +1,32 @@
+[project]
+name = "youtube-video-downloader"
+version = "0.1.0"
+description = "An application to download YouTube videos with resolution selection."
+readme = "README.md"
+requires-python = "==3.13.*"
+dependencies = [
+    "PySide6>=6.5.0",
+    "pytube>=15.0.0",
+    "asyncio",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "pytest>=6.2.0",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.7.3",
+]
+[tool.uv]
+prerelease = "allow"
+extra-index-url = [
+    "https://gitlab.com/api/v4/groups/1009252/-/packages/pypi/simple",
+]
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+[tool.bandit.assert_used]
+skips = ['*_test.py', '*/test_*.py']
